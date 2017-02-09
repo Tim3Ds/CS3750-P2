@@ -1,11 +1,9 @@
 #!/usr/bin/env node
 
 /**
+ * 
  * Module dependencies.
  */
-var io = require('socket.io')();
-io.on('connection', function(client){});
-io.listen(3000);
 
 var app = require('../app');
 var debug = require('debug')('cs3750-p2:server');
@@ -23,6 +21,8 @@ app.set('port', port);
  */
 
 var server = http.createServer(app);
+var io = require('socket.io')(server);
+require('../controllers/Socket')(io);
 
 /**
  * Listen on provided port, on all network interfaces.
