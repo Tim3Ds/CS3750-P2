@@ -1,5 +1,3 @@
-extends layout
-
 block content
     doctype html
     html
@@ -12,9 +10,13 @@ block content
         form(method='post', action='/messenger')
         .box
             h1 REGISTER
+            //- need to add confirmation that passwords are the same
+            input.email(type='email', name='email', value='first name', onfocus="field_focus(this, 'email');", onblur="field_blur_fname(this);")
+            input.email(type='email', name='email', value='last name', onfocus="field_focus(this, 'email');", onblur="field_blur_lname(this);")
             input.email(type='email', name='email', value='user name', onfocus="field_focus(this, 'email');", onblur="field_blur_user(this);")
             input.email(type='email', name='email', value='email', onfocus="field_focus(this, 'email');", onblur="field_blur_email(this, 'email');")
             input.email(type='email', name='email', value='password', onfocus="field_focus(this, 'email');", onblur="field_blur_pass(this);")
+            input.email(type='email', name='email', value='confirm password', onfocus="field_focus(this, 'email');", onblur="field_blur_passconfirm(this);")
             //- need to put this messenger page in later
             a(href='/messenger')  
             .btn Register
