@@ -10,9 +10,15 @@ body {
   background-color: cornflowerblue;
   height:30px;
   width:100vw;
-  
+  padding: 5px;
 }
-.navBAR a p{
+.navBAR a{
+  padding: 5px;
+}
+.navBAR#left {
+  padding: 5px;
+}
+.navBAR#right {
   padding: 5px;
 }
 div.body {
@@ -23,6 +29,7 @@ div.body {
 div.body h1 {
   font-weight: 700;
   text-transform: uppercase;
+  color: snow;
   margin-top: 0;
   margin-bottom: 0;
   font-size: 30px;
@@ -32,6 +39,25 @@ div.body p {
   color: rgba(255, 255, 255, 0.7);
   font-size: 16px;
   margin-bottom: 50px;
+}
+@media (min-width: 768px) {
+  div.body {
+    text-align: center;
+    min-height: 100%;
+    -webkit-transform: translateY(-10%);
+    -ms-transform: translateY(-10%);
+    transform: translateY(-10%);
+    margin-left: auto;
+    margin-right: auto;
+  }
+  div.body h1 {
+    font-size: 50px;
+  }
+  div.body  p {
+    font-size: 18px;
+    margin-left: auto;
+    margin-right: auto;
+  }
 }
 hr {
   border-color: #F05F40;
@@ -83,43 +109,6 @@ aside {
 .no-padding {
   padding: 0;
 }
-
-div.header .header-content {
-  margin-top: 10%;
-  text-align: center;
-  width: 100%;
-}
-
-div.header .header-content .header-content-inner 
-@media (min-width: 768px) {
-  div.header {
-    min-height: 100%;
-  }
-  div.header .header-content {
-    position: absolute;
-    top: 50%;
-    -webkit-transform: translateY(-50%);
-    -ms-transform: translateY(-50%);
-    transform: translateY(-50%);
-    padding: 10%;
-  }
-  div.header .header-content .header-content-inner {
-    max-width: 1000px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-  div.header .header-content .header-content-inner h1 {
-    font-size: 50px;
-  }
-  div.header .header-content .header-content-inner p {
-    font-size: 18px;
-    max-width: 80%;
-    margin-left: auto;
-    margin-right: auto;
-  }
-}
-
-
 ::-moz-selection {
   color: white;
   text-shadow: none;
