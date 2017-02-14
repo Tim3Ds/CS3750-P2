@@ -28,7 +28,7 @@ app.use('/', users);
 // add reference to login and register website paths and what controller var from above
 app.use('/login', users);
 app.use('/register', users);
-
+app.use('/chat', users);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
