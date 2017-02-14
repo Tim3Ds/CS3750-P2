@@ -6,9 +6,14 @@ var router = express.Router();
 //   res.send('respond with a resource');
 // });
 
+/* GET register page. */
+router.get('/register', function(req, res, next) {
+  res.render('register', { title: 'Register' });
+});
+
 /* GET login page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Login' });
+router.get('/login', function(req, res, next) {
+  res.render('login', { title: 'Login' });
 });
 
 module.exports = router;
