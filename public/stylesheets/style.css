@@ -1,8 +1,9 @@
+
 body {
+  /*NAV BAR STUFF HERE*/
   padding: 0px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background-image: url('../img/header.jpg');
+  background-size: 100%;
 }
 
-a {
-  color: #00B7FF;
-}
+

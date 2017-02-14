@@ -1,7 +1,7 @@
+extends layout
+
 block content
-  doctype html
-  html(lang='en')
-    head
+  div.body
       meta(charset='utf-8')
       meta(http-equiv='X-UA-Compatible', content='IE=edge')
       meta(name='viewport', content='width=device-width, initial-scale=1')
@@ -15,8 +15,7 @@ block content
       link(href='https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic', rel='stylesheet', type='text/css')
       // Theme CSS
       link(href='/stylesheets/index.css', rel='stylesheet')
-    body#page-top
-      header
+      div.header
         .header-content
           .header-content-inner
             h1#homeHeading CHAT IT UP

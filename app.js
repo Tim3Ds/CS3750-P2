@@ -8,10 +8,6 @@ var bodyParser = require('body-parser');
 var index = require('./controllers/index');
 var users = require('./controllers/users');
 
-// add reference to login and register controllers
-var login = require('./controllers/login');
-var register = require('./controllers/register');
-
 var app = express();
 
 // view engine setup
@@ -27,11 +23,12 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
-app.use('/users', users);
+app.use('/', users);
 
 // add reference to login and register website paths and what controller var from above
-app.use('/login', login);
-app.use('/register', register);
+app.use('/login', users);
+app.use('/register', users);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
