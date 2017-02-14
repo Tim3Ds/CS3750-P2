@@ -10,7 +10,8 @@ var router = express.Router();
 router.get('/register', function(req, res, next) {
   res.render('register', { title: 'Chat It Up',
                            pageName: 'Register',
-                           groupName: 'Project 2 : Group 3'
+                           groupName: 'Project 2 : Group 3',
+                           user: 'New User'
                          });
 });
 
@@ -18,7 +19,8 @@ router.get('/register', function(req, res, next) {
 router.get('/login', function(req, res, next) {
   res.render('login', { title: 'Chat It Up',
                         pageName: 'Login',
-                        groupName: 'Project 2 : Group 3'
+                        groupName: 'Project 2 : Group 3',
+                        user: 'none'
                       });
 });
 
@@ -26,7 +28,8 @@ router.get('/login', function(req, res, next) {
 router.get('/message', function(req, res, next) {
   res.render('login', { title: 'Chat It Up',
                         pageName: 'Login Failed',
-                        groupName: 'Project 2 : Group 3'
+                        groupName: 'Project 2 : Group 3',
+                        user: 'None'
                       });
 });
 

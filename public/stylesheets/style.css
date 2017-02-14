@@ -7,7 +7,7 @@ body {
   height: 100vh;
 }
 .navBAR {
-  background-color: cornflowerblue;
+  background-color: wheat;
   height:30px;
   width:100vw;
   padding: 5px;
@@ -15,24 +15,29 @@ body {
 .navBAR a{
   padding: 5px;
 }
-.navBAR#left {
-  padding: 5px;
+#left {
+  
+  float: left;
 }
-.navBAR#right {
-  padding: 5px;
+#right {
+  
+  float: right;
+}
+#center {
+  text-align: center;
 }
 div.body {
   font-family: 'Merriweather', 'Helvetica Neue', Arial, sans-serif;
   text-align:center;
   padding-top: 25vh;
 }
-div.body h1 {
+div.body h2 {
   font-weight: 700;
   text-transform: uppercase;
   color: snow;
   margin-top: 0;
   margin-bottom: 0;
-  font-size: 30px;
+  font-size: 50px;
 }
 div.body p {
   font-weight: 300;
@@ -49,9 +54,6 @@ div.body p {
     transform: translateY(-10%);
     margin-left: auto;
     margin-right: auto;
-  }
-  div.body h1 {
-    font-size: 50px;
   }
   div.body  p {
     font-size: 18px;
@@ -90,21 +92,9 @@ p {
   line-height: 1.5;
   margin-bottom: 20px;
 }
-.bg-primary {
-  background-color: #F05F40;
-}
-.bg-dark {
-  background-color: #222222;
-  color: white;
-}
+
 .text-faded {
   color: rgba(255, 255, 255, 0.7);
-}
-section {
-  padding: 100px 0;
-}
-aside {
-  padding: 50px 0;
 }
 .no-padding {
   padding: 0;

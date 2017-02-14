@@ -5,7 +5,8 @@ var router = express.Router();
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'Chat It Up',
                         pageName: 'Home',
-                        groupName: 'Project 2 : Group 3'
+                        groupName: 'Project 2 : Group 3',
+                        user: ''
                       });
 });
 

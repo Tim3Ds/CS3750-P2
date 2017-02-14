@@ -11,9 +11,9 @@ html
     script(src='http://code.jquery.com/jquery-1.11.1.js')
   body
   .navBAR
-    a#center= title
+    span#left= title + ' ' + pageName
     a#right(href='/')    Logout
-    a#left(href='/users') Users
+    a#center(href='/users')= user
 
   block content
 
