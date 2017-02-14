@@ -1,0 +1,21 @@
+extends layout
+
+block content
+    div.body
+        link(rel='stylesheet', href='/stylesheets/login.css')
+        form(method='post', action='/message')
+        .box
+            h1 LOGIN
+            input.email(type='email', name='email', value='user name', onfocus="field_focus(this, 'email');", onblur="field_blur_user(this);")
+            input.email(type='password', name='email', value='password', onfocus="field_focus(this, 'email');", onblur="field_blur_pass(this, 'email');")
+            //- need to put this messenger link in later
+            a(value='submit', )
+                .btn Sign In
+            // End Btn
+            //- links to register page
+            a(href='/register')
+                #btn2 Sign Up
+            // End Btn2
+        // End Box
+        p
+            a(href='/' style='color:crimson; font-size:14px; font-weight: bold;') HOME
