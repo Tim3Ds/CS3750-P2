@@ -13,7 +13,7 @@ var index = require('./controllers/index');
 var users = require('./controllers/users');
 var chat = require('./controllers/chat');
 
-//var schema = require('./models/schema');
+
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function() {
@@ -21,7 +21,6 @@ db.once('open', function() {
 });
 
 var app = express();
-//var User = mongoose.model('users', modelSchema);
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

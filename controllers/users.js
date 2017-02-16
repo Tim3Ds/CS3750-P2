@@ -15,31 +15,32 @@ router.get('/register', function(req, res, next) {
                          });
 });
 /* POST register from regisation form */
-router.post('/register', function(req,res,next)
-{
-  var user = new User({
-    fname = req.app.body.fname,
-    lname = req.body.lname,
-    username = req.body.username,
-    email = req.body.email,
-    password = req.body.password
-  });
-  user.save(function afterUserSaveAttempt(err, user)
-  {
-    if (err)
-    {
-      if (err == 11000)
-      {
-        error = 'That email has already been used. Try another.'
-      }
-      return next(err); 
+// router.post('/register', function(req,res,next)
+// {
+//   var user = new User({
+//     fname = req.fname
+    
+//     // lname = req.body.lname,
+//     // username = req.body.username,
+//     // email = req.body.email,
+//     // password = req.body.password
+//   });
+//   console.log(user.fname);
+//   // user.save(function afterUserSaveAttempt(err, user){
+//   //   if (err)
+//   //   {
+//   //     if (err == 11000)
+//   //     {
+//   //       error = 'That email has already been used. Try another.'
+//   //     }
+//   //     return next(err); 
       
-    }
+//   //   }
 
-    res.render('register.pug', {error: error});
-  });
-    res.redirect('/');
-});
+//   //   res.render('register.pug', {error: error});
+//   // });
+//   res.redirect('/register');
+// });
 
 /* GET login page. */
 router.get('/login', function(req, res, next) {

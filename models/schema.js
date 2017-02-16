@@ -1,5 +1,6 @@
+var mongoose = require('mongoose');
+var schema = mongoose.Schema;
 
-var objectID = schema.objectID;
 var schema = mongoose.schema({
     fname: String,
     lname: String,
@@ -8,4 +9,4 @@ var schema = mongoose.schema({
     password: String
 });
 
-module.exports = router;
+mongoose.model('ChatItUp', schema);
