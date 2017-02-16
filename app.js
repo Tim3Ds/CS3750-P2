@@ -13,6 +13,13 @@ var index = require('./controllers/index');
 var users = require('./controllers/users');
 var chat = require('./controllers/chat');
 
+var modelSchema = require('modelSchema');
+var db = mongoose.connection;
+db.on('error', console.error.bind(console, 'connection error:'));
+db.once('open', function() {
+  // we're connected!
+});
+
 var app = express();
 
 // view engine setup
