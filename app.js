@@ -7,6 +7,7 @@ var bodyParser = require('body-parser');
 
 var index = require('./controllers/index');
 var users = require('./controllers/users');
+var chat = require('./controllers/chat');
 
 var app = express();
 
