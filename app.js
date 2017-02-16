@@ -58,8 +58,6 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-let validateLogin = (user, password) => {
-  
-}
+
 
 module.exports = app;
