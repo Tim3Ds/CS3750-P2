@@ -13,7 +13,7 @@ var index = require('./controllers/index');
 var users = require('./controllers/users');
 var chat = require('./controllers/chat');
 
-var modelSchema = require('modelSchema');
+// var modelSchema = require('modelSchema');
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function() {
@@ -22,7 +22,7 @@ db.once('open', function() {
 
 var app = express();
 
-var User = mongoose.model('users', regSchema);
+// var User = mongoose.model('users', regSchema);
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -37,7 +37,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
-//app.use('/users', users);
+app.use('/users', users);
 
 // add reference to login and register website paths and what controller var from above
 app.use('/login', users);
