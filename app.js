@@ -23,7 +23,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
-app.use('/', users);
+app.use('/users', users);
 
 // add reference to login and register website paths and what controller var from above
 app.use('/login', users);
