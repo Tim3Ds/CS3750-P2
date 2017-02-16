@@ -11,7 +11,7 @@ router.get('/register', function(req, res, next) {
   res.render('register', { title: 'Chat It Up',
                            pageName: 'Register',
                            groupName: 'Project 2 : Group 3',
-                           user: user
+                           user: 'user'
                          });
 });
 /* POST register from regisation form */
@@ -47,18 +47,19 @@ router.get('/login', function(req, res, next) {
   res.render('login', { title: 'Chat It Up',
                         pageName: 'Login',
                         groupName: 'Project 2 : Group 3',
-                        user: user
+                        user: 'user'
                       });
 });
 /* POST login request */
-router.post('/login', function(req, res, next) {  
+router.post('/login', function(req, res, next) {
+  var user = new User;
   user.findOne(function (err, user) {
-  if (err)
+    if (err)
     {
       return next(err);
     }
     res.redirect('/chat');
-  })
+  });
 });
 
 
