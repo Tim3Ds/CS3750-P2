@@ -6,7 +6,7 @@ $(document).ready(function(){
 
 //Stop click event
 $('.btn').click(function(event){
-    e = e || window.event;
+    e = event || window.event;
     var target = e.target || e.srcElement;
     if (target.value == "Register")
     {
