@@ -7,9 +7,28 @@ body {
   height: 100vh;
 }
 
+.navBAR {
+  background-color: wheat;
+}
+
 #navigation{
   height:30px;
-  width:100%;
+  width:100vw;
+  padding: 5px;
+}
+.navBAR a{
+  padding: 5px;
+}
+#left {
+  
+  float: left;
+}
+#right {
+  
+  float: right;
+}
+#center {
+  text-align: center;
 }
 
 
