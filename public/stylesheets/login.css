@@ -61,6 +61,7 @@ h1{
 .btn{
   background:#2ecc71;
   width:125px;
+  height:30px;
   padding-top:5px;
   padding-bottom:5px;
   color:white;
@@ -82,7 +83,9 @@ h1{
 #btn2{
   float:left;
   background:#3498db;
-  width:125px;  padding-top:5px;
+  width:125px; 
+  height:30px; 
+  padding-top:5px;
   padding-bottom:5px;
   color:white;
   border-radius:4px;
