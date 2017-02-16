@@ -1,3 +1,4 @@
+
 var objectID = schema.objectID;
 var schema = mongoose.schema({
     fname: String,
@@ -5,4 +6,6 @@ var schema = mongoose.schema({
     username: {type: String, unique: true},
     email: {type: String, unique: true},
     password: String
-})
+});
+
+module.exports = router;

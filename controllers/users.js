@@ -24,22 +24,6 @@ router.get('/login', function(req, res, next) {
                       });
 });
 
-/* GET login page. */
-router.get('/message', function(req, res, next) {
-  res.render('login', { title: 'Chat It Up',
-                        pageName: 'Login Failed',
-                        groupName: 'Project 2 : Group 3',
-                        user: 'None'
-                      });
-});
 
-/* GET chat page. */
-router.get('/chat', function(req, res, next) {
-  res.render('chat', { title: 'Chat It Up',
-                        pageName: 'Chat',
-                        groupName: 'Project 2 : Group 3',
-                        user: 'None'
-                      });
-});
 
 module.exports = router;
