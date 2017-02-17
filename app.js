@@ -5,8 +5,20 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
+var mongoose = require('mongoose');
+mongoose.connect('mongodb://localhost/test');
+mongoose.Promise = Promise;
+
 var index = require('./controllers/index');
 var users = require('./controllers/users');
+var chat = require('./controllers/chat');
+
+
+var db = mongoose.connection;
+db.on('error', console.error.bind(console, 'connection error:'));
+db.once('open', function() {
+  // we're connected!
+});
 
 var app = express();
 
@@ -24,11 +36,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
 app.use('/users', users);
+app.use('/chat', chat);
 
-// add reference to login and register website paths and what controller var from above
-app.use('/login', users);
-app.use('/register', users);
-app.use('/chat', users);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -48,8 +58,6 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-let validateLogin = (user, password) => {
-  
-}
+
 
 module.exports = app;
