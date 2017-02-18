@@ -11,29 +11,7 @@ body {
   color: white;
   margin: 0 auto, 0 auto
 }
-
-/*.navBAR {
-  background-color: wheat;
+.navbar-nav-center { 
+  position: absolute;
+  left: 46%;
 }
-
-#navigation{
-  height:30px;
-  width:100vw;
-  padding: 5px;
-}
-.navBAR a{
-  padding: 5px;
-}
-#left {
-  
-  float: left;
-}
-#right {
-  
-  float: right;
-}
-#center {
-  text-align: center;
-}*/
-
-
