@@ -69,7 +69,7 @@ router.get('/login', function(req, res, next) {
  * Once a user is logged in, they will be sent to the chat page.
  */
 router.post('/login', function(req, res) {
-  models.schema.findOne({ email: req.body.email }, 'fName lName username email password data', function(err, user) {
+  models.schema.findOne({ email: req.body.email }, 'fname lname username email password data', function(err, user) {
     if (!schema) {
       res.render('login', { error: "Incorrect email / password.", csrfToken: req.csrfToken() });
     } else {
