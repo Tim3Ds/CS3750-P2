@@ -1,6 +1,24 @@
 extends layout
 
 block content
+    div.window
+    
+    html(xmlns='http://www.w3.org/1999/xhtml')
+      head
+        title Chat - Customer Module
+        link(type='text/css', rel='stylesheet', href='/stylesheets/window.css')
+      #wrapper
+        #menu
+          p.welcome
+            | Chat It Up, 
+            b
+          p.logout
+            a#exit(href='#') Exit Chat
+          div(style='clear:both')
+        #chatbox
+        form(name='message', action='')
+          input#usermsg(name='usermsg', type='text', size='63')
+          input#submitmsg(name='submitmsg', type='submit', value='Send')
 
 block scrpits
   script(src='/socket.io/socket.io.js')
