@@ -3,7 +3,7 @@ var router = express.Router();
 
 
 /* GET chat page. */
-router.get('/window', function(req, res, next) {
+router.get('/', function(req, res, next) {
   res.render('window', { title: 'Chat It Up',
                         pageName: 'Chat Window',
                         groupName: 'Project 2 : Group 3',
