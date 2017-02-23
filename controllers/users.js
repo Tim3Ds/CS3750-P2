@@ -43,16 +43,22 @@ router.post('/register', function(req, res, next) {
       return next(err);
       res.render('register', { error: error });
     } else {
-    // if no errors we create a new user session and redirect to the chat
-    utils.createUserSession(req, res, user);
-    res.redirect('/chat');
+      // if no errors we create a new user session and redirect to the chat
+      utils.createUserSession(req, res, user);
+      res.redirect('/chat', {
+        userName: req.user.username,
+        csrfToken: req.csrfToken()
+      });
     }
   });
 });
 
 /* GET login page. */
 router.get('/login', function(req, res, next) {
-  res.render('login', { csrfToken: req.csrfToken() });
+  res.render('login', { 
+    userName: req.user.username,
+    csrfToken: req.csrfToken() 
+  });
 });
 
 
@@ -73,7 +79,10 @@ router.post('/login', function(req, res) {
       if (bcrypt.compareSync(req.body.password, user.password)) {
         // if input is validated create a new user session and redirect to chat
         utils.createUserSession(req, res, user);
-        res.redirect('/chat');
+        res.redirect('/chat', {
+          userName: req.user.username,
+          csrfToken: req.csrfToken()
+        });
       } else {
         // if password is wrong redirecct to login with error msg displayed
         res.render('login', { error: "Incorrect email / password.", csrfToken: req.csrfToken() });
