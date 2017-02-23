@@ -4,27 +4,38 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-
 var mongoose = require('mongoose');
+
+// David: added for db validation
+var csrf = require('csurf');
+var session = require('client-sessions');
+var middleware = require('./middleware');
+
+
+// database dependencies
 mongoose.connect('mongodb://localhost/test');
 mongoose.Promise = Promise;
 
+// controllers
 var index = require('./controllers/index');
 var users = require('./controllers/users');
 var chat = require('./controllers/chat');
 
-
+// database connection
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function() {
   // we're connected!
 });
 
+// express
 var app = express();
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
+
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
@@ -34,10 +45,23 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+
+// middleware
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(session({
+  cookieName: 'session',
+  secret: 'keyboard cat',
+  duration: 30 * 60 * 1000,
+  activeDuration: 5 * 60 * 1000,
+}));
+app.use(csrf());
+app.use(middleware.simpleAuth);
+
+
+//routes
 app.use('/', index);
 app.use('/users', users);
 app.use('/chat', chat);
-
 
 
 // catch 404 and forward to error handler
@@ -46,6 +70,7 @@ app.use(function(req, res, next) {
   err.status = 404;
   next(err);
 });
+
 
 // error handler
 app.use(function(err, req, res, next) {
@@ -57,7 +82,5 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
-
-
 
 module.exports = app;
