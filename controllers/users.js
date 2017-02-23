@@ -24,26 +24,32 @@ router.post('/register', function(req, res, next) {
   var salt = bcrypt.genSaltSync(10);
   var hash = bcrypt.hashSync(req.body.password, salt);
 
+
+
   var user = new schema.User({
-    fmame:      req.body.fName,
-    lname:      req.body.lName,
-    username:   req.body.username,
+    fname:      req.body.fname,
+    lname:      req.body.lname,
     email:      req.body.email,
+    username:   req.body.username,
     password:   hash,
   });
+  console.log(user); 
   user.save(function(err) {
     if (err) {
+      console.log("IN SAVE ERROR");
       var error = 'Something bad happened! Please try again.';
 
       if (err.code === 11000) {
         error = 'That email is already taken, please try another.';
       }
       return next(err);
+      res.render('register', { error: error });
+    } else {
+    console.log('YOU ARE IN THE REGISTER SAVE');
+    utils.createUserSession(req, res, user);
+    res.redirect('/chat');
     }
-    res.render('register', { error: error });
   });
-  utils.createUserSession(req, res, user);
-  res.redirect('/chat');
 });
 
 /* GET login page. */
@@ -58,7 +64,7 @@ router.get('/login', function(req, res, next) {
  * Once a user is logged in, they will be sent to the chat page.
  */
 router.post('/login', function(req, res, next) {
-  models.schema.findOne({ email: req.body.email }, 'fname lname username email password data', function(err, user) {
+  models.schema.findOne({ username: req.body.username }, 'fname lname email username password data', function(err, user) {
     if (!schema) {
       res.render('login', { error: "Incorrect email / password.", csrfToken: req.csrfToken() });
     } else {
@@ -66,8 +72,7 @@ router.post('/login', function(req, res, next) {
         utils.createUserSession(req, res, user);
         res.redirect('/chat');
       } else {
-        res.render('login', { error: "Incorrect email / password.", 
-       });
+        res.render('login.jade', { error: "Incorrect email / password.", csrfToken: req.csrfToken() });
       }
     }
   });

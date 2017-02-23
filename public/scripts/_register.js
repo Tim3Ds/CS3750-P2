@@ -13,7 +13,6 @@ $(function() {
         var username = $('#username');
         var fname = $('#fname');
         var lname = $('#lname');
-        var register = $('#register');
 
         //need names and username validation
         var validator = $("#register-form").kendoValidator({
