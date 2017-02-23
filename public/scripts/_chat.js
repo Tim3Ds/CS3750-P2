@@ -1,9 +1,15 @@
 
+// var app = require('express')();
+// var server = require('http').createServer(app);
+// var io = require('socket.io')(server);
+// server.listen(3000);
+
+
 
 window.onload = () => {
     var socket = io();
 
-    
+    socket.emit('send', { user: 'tim', message: 'this'});
     
     var Message = function (arg) {
         this.text = arg.text, this.message_side = arg.message_side;
@@ -26,7 +32,7 @@ window.onload = () => {
         getMessageText = function () {
             var $message_input;
             $message_input = $('.message_input');
-            console.log($message_input.val());
+            socket.emit('send', { user: 'tim', message: 'this'});
             return $message_input.val();
         };
         sendMessage = function (text) {
@@ -42,10 +48,12 @@ window.onload = () => {
                 text: text,
                 message_side: message_side
             });
+            socket.emit('send', { user: 'tim', message: 'this'});
             message.draw();
             return $messages.animate({ scrollTop: $messages.prop('scrollHeight') }, 300);
         };
         $('.send_message').click(function (e) {
+            SocketIO.emit('send', {user: 'test send', message: 'text'});
             return sendMessage(getMessageText());
         });
         $('.message_input').keyup(function (e) {
