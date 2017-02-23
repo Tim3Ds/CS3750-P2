@@ -25,9 +25,10 @@ module.exports.requireLogin = function(req, res, next) {
  */
 module.exports.createUserSession = function(req, res, user) {
   var cleanUser = {
-    firstName:  user.firstName,
-    lastName:   user.lastName,
+    fname:  user.fname,
+    lname:   user.lname,
     email:      user.email,
+    username:   user.username,
     data:       user.data || {},
   };
 
