@@ -25,7 +25,7 @@ router.get('/register', function(req, res, next) {
  *
  * Once a user is logged in, they will be sent to the chat page.
  */
-router.post('/register', function(req, res) {
+router.post('/', function(req, res) {
   var salt = bcrypt.genSaltSync(10);
   var hash = bcrypt.hashSync(req.body.password, salt);
 
@@ -44,17 +44,17 @@ router.post('/register', function(req, res) {
         error = 'That email is already taken, please try another.';
       }
 
-      res.render('register', { error: error });
+      res.render('/user/register', { error: error });
     } else {
       app.createUserSession(req, res, user);
-      res.redirect('window');
+      res.redirect('/chat');
     }
   });
 });
 
 /* GET login page. */
 router.get('/login', function(req, res, next) {
-  res.render('login', { title: 'Chat It Up',
+  res.render('/user/login', { title: 'Chat It Up',
                         pageName: 'Login',
                         groupName: 'Project 2 : Group 3',
                         user: 'user',
@@ -71,13 +71,14 @@ router.get('/login', function(req, res, next) {
 router.post('/login', function(req, res) {
   models.schema.findOne({ email: req.body.email }, 'fname lname username email password data', function(err, user) {
     if (!schema) {
-      res.render('login', { error: "Incorrect email / password.", csrfToken: req.csrfToken() });
+      res.render('/user/login', { error: "Incorrect email / password.", csrfToken: req.csrfToken() });
     } else {
       if (bcrypt.compareSync(req.body.password, user.password)) {
         app.createUserSession(req, res, user);
-        res.redirect('window');
+        res.redirect('/chat');
       } else {
-        res.render('login', { error: "Incorrect email / password.", csrfToken: req.csrfToken() });
+        res.render('/chat', { error: "Incorrect email / password.", 
+       });
       }
     }
   });
