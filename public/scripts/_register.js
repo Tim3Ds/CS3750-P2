@@ -4,16 +4,6 @@ $(document).ready(function(){
     $('.box').hide().fadeIn(1000);
     });
 
-//Stop click event
-$('.btn').click(function(event){
-    e = event || window.event;
-    var target = e.target || e.srcElement;
-    if (target.value == "Register")
-    {
-        event.preventDefault();
-    }
-});
-
 //Form validation
 $(function() {
         // cache references to input controls
@@ -94,11 +84,11 @@ $(function() {
 
 
         //ON CLICK FORM VALIDATION
-        $('#register').on("click", function() {
-            if (validator.validate()) {
+        $('#register-form').on("submit", function(event) {
+            if (!validator.validate()) {
                 // If the form is valid, the Validator will return true
                 //do stuff
-                document.register-form.submit();
+                event.preventDefault();
             }
         });
 

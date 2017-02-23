@@ -1,5 +1,6 @@
 var mongoose = require('mongoose');
 var schema = mongoose.Schema;
+var ObjectId = schema.ObjectId;
 
 // var schema = mongoose.schema({
 //     fname: String,
@@ -9,7 +10,7 @@ var schema = mongoose.Schema;
 //     password: String
 // });
 
-module.exports.User = mongoose.model('User', new Schema({
+module.exports.User = mongoose.model('User', new schema({
   id:           ObjectId,
   fname:        { type: String, required: '{PATH} is required.' },
   lname:        { type: String, required: '{PATH} is required.' },

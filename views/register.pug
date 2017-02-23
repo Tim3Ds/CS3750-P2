@@ -8,7 +8,7 @@ block content
         link(rel='stylesheet', href='//cdn.kendostatic.com/2013.3.1119/styles/kendo.bootstrap.min.css')
         link(rel='stylesheet', href='/stylesheets/login.css')
     div.body
-        form(id='register-form', method='POST', action='/register' novalidate)
+        form(id='register-form', method='POST', action='')
             .box
                 h1 REGISTER
                 .form-group
@@ -24,8 +24,7 @@ block content
                 .form-group
                 input.password(type='password', name='confirm-password', id='confirm-password', placeholder='Confirm password', required, data-required-msg='Confirmation is required')    
                 .form-group
-                a(value='submit', )
-                    #register.btn(type='submit', value='') Register
+                button#register.btn(type='submit') Register
                 //- links to register page
                 a(href='/users/login')
                     #btn2 Sign In
