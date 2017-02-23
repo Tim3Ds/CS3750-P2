@@ -3,7 +3,7 @@ var router = express.Router();
 var utils = require('./utils');  // has function to make sure you can only get to page if logged in
 
 /* GET chat page. */
-router.get('/', function(req, res, next) {
+router.get('/', utils.requireLogin, function(req, res, next) {
   res.render('window', {  title: 'Chat It Up',
                           pageName: 'Chat Window',
                           groupName: 'Project 2 : Group 3',
