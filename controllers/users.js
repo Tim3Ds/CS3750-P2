@@ -36,7 +36,6 @@ router.post('/register', function(req, res, next) {
   console.log(user); 
   user.save(function(err) {
     if (err) {
-      console.log("IN SAVE ERROR");
       var error = 'Something bad happened! Please try again.';
 
       if (err.code === 11000) {
@@ -45,7 +44,6 @@ router.post('/register', function(req, res, next) {
       return next(err);
       res.render('register', { error: error });
     } else {
-    console.log('YOU ARE IN THE REGISTER SAVE');
     utils.createUserSession(req, res, user);
     res.redirect('/chat');
     }
@@ -61,18 +59,19 @@ router.get('/login', function(req, res, next) {
 /**
  * Log a user into their account.
  *
- * Once a user is logged in, they will be sent to the chat page.
+ * Once a user is logged in, they will be sent to the dashboard page.
  */
-router.post('/login', function(req, res, next) {
-  models.schema.findOne({ username: req.body.username }, 'fname lname email username password data', function(err, user) {
-    if (!schema) {
-      res.render('login', { error: "Incorrect email / password.", csrfToken: req.csrfToken() });
+router.post('/login', function(req, res) {
+  schema.User.findOne({ username: req.body.username }, 'fname lname email username password data', function(err, user) {
+    console.log(user);
+    if (!user) {
+      res.render('login.jade', { error: "Incorrect email / password.", csrfToken: req.csrfToken() });
     } else {
       if (bcrypt.compareSync(req.body.password, user.password)) {
         utils.createUserSession(req, res, user);
         res.redirect('/chat');
       } else {
-        res.render('login.jade', { error: "Incorrect email / password.", csrfToken: req.csrfToken() });
+        res.render('login', { error: "Incorrect email / password.", csrfToken: req.csrfToken() });
       }
     }
   });

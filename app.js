@@ -13,7 +13,7 @@ var middleware = require('./middleware');
 
 
 // database dependencies
-mongoose.connect('mongodb://localhost/test');
+mongoose.connect('mongodb://localhost/chat');
 mongoose.Promise = Promise;
 
 // controllers
