@@ -56,7 +56,6 @@ router.post('/register', function(req, res, next) {
 /* GET login page. */
 router.get('/login', function(req, res, next) {
   res.render('login', { 
-    userName: req.user.username,
     csrfToken: req.csrfToken() 
   });
 });
