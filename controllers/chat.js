@@ -1,8 +1,10 @@
 var express = require('express');
 var router = express.Router();
+var utils = require('./utils')
+//var utils = require('./utils');
 
 
-/* GET chat page. */
+/* GET chat page. , utils.requireLogin */
 router.get('/', function(req, res, next) {
   res.render('window', { title: 'Chat It Up',
                         pageName: 'Chat Window',
@@ -10,7 +12,5 @@ router.get('/', function(req, res, next) {
                         user: 'None'
                       });
 });
-
-
 
 module.exports = router;

@@ -8,10 +8,15 @@ block content
         link(rel='stylesheet', href='//cdn.kendostatic.com/2013.3.1119/styles/kendo.bootstrap.min.css')
         link(rel='stylesheet', href='/stylesheets/login.css')
     div.body
+        
+        if error
+            p ERROR: #{error}
+
         form(id='register-form', method='POST', action='')
             .box
                 h1 REGISTER
                 .form-group
+                input.register(type="hidden", name="_csrf", value=csrfToken)
                 input.register(type='text', name='fname', id='fname', placeholder='Enter first name', required, data-required-msg='First name is required')
                 .form-group
                 input.register(type='text', name='lname', id='lname', placeholder='Enter last name', required, data-required-msg='Last name is required')
