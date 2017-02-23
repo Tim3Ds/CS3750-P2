@@ -4,10 +4,12 @@ var utils = require('./utils');  // has function to make sure you can only get t
 
 /* GET chat page. */
 router.get('/', function(req, res, next) {
-  res.render('window', { title: 'Chat It Up',
-                        pageName: 'Chat Window',
-                        groupName: 'Project 2 : Group 3'
-                      });
+  res.render('window', {  title: 'Chat It Up',
+                          pageName: 'Chat Window',
+                          groupName: 'Project 2 : Group 3',
+                          userName: req.user.username,
+                          csrfToken: req.csrfToken()
+                       });
 });
 
 
