@@ -31,7 +31,7 @@ router.post('/register', function(req, res, next) {
     email:      req.body.email,
     password:   hash,
   });
-  user.save(function(err, user) {
+  user.save(function(err) {
     if (err) {
       var error = 'Something bad happened! Please try again.';
 

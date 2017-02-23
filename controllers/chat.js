@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-
+var utils = require('./utils');
 
 /* GET chat page. */
 router.get('/', function(req, res, next) {
