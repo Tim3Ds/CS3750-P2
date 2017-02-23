@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var utils = require('./utils');
+var utils = require('./utils');  // has function to make sure you can only get to page if logged in
 
 /* GET chat page. */
 router.get('/', function(req, res, next) {

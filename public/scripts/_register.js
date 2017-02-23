@@ -22,7 +22,6 @@ $(function() {
             passwordMatch: function(input) {
 
                 // passwords must match
-
                 if (input.is('#confirm-password')) {
                 return $.trim(password.val()) === $.trim(confirmPassword.val());
                 }
@@ -34,7 +33,6 @@ $(function() {
             passwordLength: function(input) {
 
                 // passwords must be 6 chars
-
                 if (input.is('#password')) {
                     return $.trim(password.val()).length >= 6;
                 }
@@ -72,17 +70,16 @@ $(function() {
 
             // custom error messages. email gets picked up 
             // automatically for any inputs of that type
-
             passwordMatch: 'The passwords don\'t match',
             passwordLength: 'Must be at least 6 characters',
             userAlphanumeric: 'Letters, numbers, -, _ only',
             emailMatch: 'Must be a valid email'
             }
 
-        }).getKendoValidator(); //.data('kendoValidator');
+        }).getKendoValidator(); 
 
 
-        //ON CLICK FORM VALIDATION
+        //ON SUBMIT FORM VALIDATION
         $('#register-form').on("submit", function(event) {
             if (!validator.validate()) {
                 // If the form is valid, the Validator will return true

@@ -2,10 +2,9 @@ var models = require('./models/schema');
 var utils = require('./controllers/utils');
 
 /**
- * A simple authentication middleware for Express.
- *
- * This middleware will load users from session data, and handle all user
- * proxying for convenience.
+ * authentication middleware for Express.
+ * runs constantly in app.js with app.use(./middleware);
+ * loadS users from session data, and handle all users
  */
 module.exports.simpleAuth = function(req, res, next) {
   if (req.session && req.session.user) {

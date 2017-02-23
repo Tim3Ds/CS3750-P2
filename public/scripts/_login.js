@@ -18,7 +18,6 @@ $(function() {
             passwordLength: function(input) {
 
                 // passwords must be 6 chars
-
                 if (input.is('#password')) {
                     return $.trim(password.val()).length >= 6;
                 }
@@ -43,7 +42,6 @@ $(function() {
 
             // custom error messages. email gets picked up 
             // automatically for any inputs of that type
-
             passwordLength: 'Must be at least 6 characters',
             userAlphanumeric: 'Letters, numbers, -, _ only'
             }
@@ -51,7 +49,7 @@ $(function() {
         }).getKendoValidator(); //.data('kendoValidator');
 
 
-        //ON CLICK FORM VALIDATION
+        //ON SUBMIT FORM VALIDATION
         $('#login-form').on("submit", function(event) {
             if (!validator.validate()) {
                 // If the form is valid, the Validator will return true

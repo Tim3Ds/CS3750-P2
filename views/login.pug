@@ -19,6 +19,7 @@ block content
         form(id='register-form', method='POST', action='')
             .box
                 h1 LOGIN
+                //- hidden input to protect from csrf attacks
                 input.register(type="hidden", name="_csrf", value=csrfToken)
                 .form-group
                 input.register(type='text', name='username', id='username', placeholder='Enter username', required=true, data-required-msg='Username is required')
