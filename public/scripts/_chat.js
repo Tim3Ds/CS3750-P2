@@ -1,20 +1,38 @@
 
-// var app = require('express')();
-// var server = require('http').createServer(app);
-// var io = require('socket.io')(server);
-// server.listen(3000);
-
-
+window.disconnect = () => {
+    io.disconnect();
+    
+};
 
 window.onload = () => {
-    var socket = io();
-
-    socket.emit('send', { user: 'tim', message: 'this'});
-    
+    var socket = io.connect('http://localhost:3700');
+    socket.on('message', (msg)=>{
+        var $messages, message;
+        if (msg.text.trim() === '') {
+            return;
+        }
+        $('.message_input').val('');
+        $messages = $('.messages');
+        var me = $('.myName');
+        if(msg.username == me ){
+            message_side = 'right';
+        }else{
+            message_side = 'left';
+        }
+        //message_side = message_side === 'left' ? 'right' : 'left';
+        message = new Message({
+            user: msg.username,
+            text: msg.text,
+            message_side: message_side
+        });
+        message.draw();
+        return $messages.animate({ scrollTop: $messages.prop('scrollHeight') }, 300);
+    });
     var Message = function (arg) {
         this.text = arg.text, this.message_side = arg.message_side;
         this.draw = function (_this) {
             return function () {
+                //document.getElementById(me).innerHTML = arg.user;
                 var $message;
                 $message = $($('.message_template').clone().html());
                 $message.addClass(_this.message_side).find('.text').html(_this.text);
@@ -32,28 +50,12 @@ window.onload = () => {
         getMessageText = function () {
             var $message_input;
             $message_input = $('.message_input');
-            socket.emit('send', { user: 'tim', message: 'this'});
             return $message_input.val();
         };
         sendMessage = function (text) {
-            socket.emit('send', {user: 'test', message: text});
-            var $messages, message;
-            if (text.trim() === '') {
-                return;
-            }
-            $('.message_input').val('');
-            $messages = $('.messages');
-            message_side = message_side === 'left' ? 'right' : 'left';
-            message = new Message({
-                text: text,
-                message_side: message_side
-            });
-            socket.emit('send', { user: 'tim', message: 'this'});
-            message.draw();
-            return $messages.animate({ scrollTop: $messages.prop('scrollHeight') }, 300);
+            socket.emit('send', text);
         };
         $('.send_message').click(function (e) {
-            SocketIO.emit('send', {user: 'test send', message: 'text'});
             return sendMessage(getMessageText());
         });
         $('.message_input').keyup(function (e) {
@@ -61,13 +63,13 @@ window.onload = () => {
                 return sendMessage(getMessageText());
             }
         });
-        sendMessage('Hello Philip! :)');
-        setTimeout(function () {
-            return sendMessage('Hi Sandy! How are you?');
-        }, 1000);
-        return setTimeout(function () {
-            return sendMessage('I\'m fine, thank you!');
-        }, 2000);
+        // sendMessage('Hello Philip! :)');
+        // setTimeout(function () {
+        //     return sendMessage('Hi Sandy! How are you?');
+        // }, 1000);
+        // return setTimeout(function () {
+        //     return sendMessage('I\'m fine, thank you!');
+        // }, 2000);
     });
 }
 
