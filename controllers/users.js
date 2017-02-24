@@ -38,7 +38,7 @@ router.post('/register', function(req, res, next) {
       var error = 'Something bad happened! Please try again.';
 
       if (err.code === 11000) {
-        error = 'That email is already taken, please try another.';
+       res.render('register',{ error: "That email is already registered" });
       }
       return next(err);
       res.render('register', { error: error });
