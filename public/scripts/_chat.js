@@ -2,7 +2,7 @@
 
 window.onload = () => {
     
-    let socket = io.connect('http://localhost:3700');
+    let socket = io();
 
     socket.on('message', (msg)=>{
         var $messages, message;
