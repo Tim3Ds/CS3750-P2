@@ -14,6 +14,7 @@ let userCount = 0;
 router.get('/', utils.requireLogin, function(req, res, next) {
   io.on('connection', function (socket) {
     userCount++;
+    console.log('test con ', socket.connected)
     console.log('a user connected ' + userCount + ' user(s)');
     socket.on('send', function (msg) {
       io.emit('message', { 

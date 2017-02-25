@@ -1,11 +1,9 @@
 
-window.disconnect = () => {
-    io.disconnect();
-    
-};
 
 window.onload = () => {
-    var socket = io.connect('http://localhost:3700');
+    
+    let socket = io.connect('http://localhost:3700');
+
     socket.on('message', (msg)=>{
         var $messages, message;
         if (msg.text.trim() === '') {
@@ -22,6 +20,7 @@ window.onload = () => {
         //message_side = message_side === 'left' ? 'right' : 'left';
         message = new Message({
             user: msg.username,
+            time: msg.date,
             text: msg.text,
             message_side: message_side
         });
@@ -29,13 +28,13 @@ window.onload = () => {
         return $messages.animate({ scrollTop: $messages.prop('scrollHeight') }, 300);
     });
     var Message = function (arg) {
-        this.text = arg.text, this.message_side = arg.message_side;
+        this.user = arg.user, this.time = arg.time, this.text = arg.text, this.message_side = arg.message_side;
         this.draw = function (_this) {
             return function () {
                 //document.getElementById(me).innerHTML = arg.user;
                 var $message;
                 $message = $($('.message_template').clone().html());
-                $message.addClass(_this.message_side).find('.text').html(_this.text);
+                $message.addClass(_this.message_side).find('.text').html(_this.text).find('.user').html(_this.user);
                 $('.messages').append($message);
                 return setTimeout(function () {
                     return $message.addClass('appeared');
