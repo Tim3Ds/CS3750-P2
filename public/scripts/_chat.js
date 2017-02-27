@@ -1,18 +1,20 @@
 
 
 window.onload = () => {
-    
+    let user = document.getElementsByTagName('p')[0].textContent;
+
     let socket = io();
 
     socket.on('message', (msg)=>{
+        console.log('get message')
         var $messages, message;
         if (msg.text.trim() === '') {
             return;
         }
         $('.message_input').val('');
         $messages = $('.messages');
-        var me = $('.myName');
-        if(msg.username == me ){
+        console.log('you: ' + user + 'sender: ' + msg.username)
+        if(msg.username == user ){
             message_side = 'right';
         }else{
             message_side = 'left';
@@ -34,7 +36,10 @@ window.onload = () => {
                 //document.getElementById(me).innerHTML = arg.user;
                 var $message;
                 $message = $($('.message_template').clone().html());
-                $message.addClass(_this.message_side).find('.text').html(_this.text).find('.user').html(_this.user);
+                $message.addClass(_this.message_side).find('.text').html(_this.text);
+                $message.addClass(_this.message_side).find('.user').html(_this.user);
+                $message.addClass(_this.message_side).find('.time').html(_this.time);
+                console.log('text: '+_this.text+' user: '+_this.user+' time: '+_this.time);
                 $('.messages').append($message);
                 return setTimeout(function () {
                     return $message.addClass('appeared');
@@ -52,7 +57,11 @@ window.onload = () => {
             return $message_input.val();
         };
         sendMessage = function (text) {
-            socket.emit('send', text);
+            console.log('send: ' + text);
+            socket.emit('send', { 
+                username: user,
+                text: text 
+            });
         };
         $('.send_message').click(function (e) {
             return sendMessage(getMessageText());

@@ -7,6 +7,16 @@ module.exports = (io) => {
     io.on('connection', function (socket) {
         userCount++;
         console.log('a user connected ' + userCount + ' user(s)');
+        socket.on('send', function (msg) {
+            console.log('sending message: ' + 
+                        msg.username + ' ' +
+                        msg.text)
+            socket.emit('message', { 
+                username: msg.username, 
+                text: msg.text, 
+                time: new Date().toLocaleTimeString 
+            });
+        });
         socket.on('disconnect', function(){
             userCount--;
             console.log('user disconnected ' + userCount + ' user(s)');
