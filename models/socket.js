@@ -8,13 +8,14 @@ module.exports = (io) => {
         userCount++;
         console.log('a user connected ' + userCount + ' user(s)');
         socket.on('send', function (msg) {
+            stamp = new Date();
             console.log('sending message: ' + 
                         msg.username + ' ' +
                         msg.text)
             io.emit('message', { 
                 username: msg.username, 
                 text: msg.text, 
-                time: new Date().toLocaleTimeString 
+                time: stamp.getHours() + ':' + stamp.getMinutes() 
             });
         });
         socket.on('disconnect', function(){
