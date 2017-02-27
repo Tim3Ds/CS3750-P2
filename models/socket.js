@@ -11,7 +11,7 @@ module.exports = (io) => {
             console.log('sending message: ' + 
                         msg.username + ' ' +
                         msg.text)
-            socket.emit('message', { 
+            io.emit('message', { 
                 username: msg.username, 
                 text: msg.text, 
                 time: new Date().toLocaleTimeString 

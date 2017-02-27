@@ -3,7 +3,7 @@
 window.onload = () => {
     let user = document.getElementsByTagName('p')[0].textContent;
 
-    let socket = io();
+    let socket = io.connect('http://localhost:3000');
 
     socket.on('message', (msg)=>{
         console.log('get message')
