@@ -29,13 +29,14 @@ html(lang='en')
               span#myName= userName
         ul.nav.navbar-nav.navbar-right
           li
-            a(href='/users/register')
-              span.glyphicon.glyphicon-user
-              |  Sign Up
-          li
-            a(href='/users/login')
-              span.glyphicon.glyphicon-log-in
-              |  Login
+            if userName == ''
+              a(href='/users/login')
+                span.glyphicon.glyphicon-log-in
+                |  Login
+            else 
+              a(href='/logout')
+                span.glyphicon.glyphicon-log-out
+                |  Logout
     .container
 
     block scripts
