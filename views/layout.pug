@@ -29,7 +29,7 @@ html(lang='en')
               span#myName= userName
         ul.nav.navbar-nav.navbar-right
           li
-            if userName == ''
+            if userName == 'None'
               a(href='/users/login')
                 span.glyphicon.glyphicon-log-in
                 |  Login

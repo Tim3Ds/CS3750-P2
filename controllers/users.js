@@ -8,10 +8,17 @@ var router = express.Router();
 // router.get('/', function(req, res, next) {
 //   res.send('respond with a resource');
 // });
-
+var noUser = {
+  username: 'No User'
+};
 /* GET register page. */
 router.get('/register', function(req, res, next) {
-  res.render('register', { csrfToken: req.csrfToken() });
+  if(req.user == null){
+    req.user = noUser;
+  }
+  res.render('register', { 
+    userName: req.user.username,
+    csrfToken: req.csrfToken() });
 });
 
 /**
@@ -52,7 +59,11 @@ router.post('/register', function(req, res, next) {
 
 /* GET login page. */
 router.get('/login', function(req, res, next) {
+  if(req.user == null){
+    req.user = noUser;
+  }
   res.render('login', { 
+    userName: req.user.username,
     csrfToken: req.csrfToken() 
   });
 });
