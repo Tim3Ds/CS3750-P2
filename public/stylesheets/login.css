@@ -4,8 +4,8 @@ div.body{
   height:100%;
   text-align:center;
   margin: 0px 0px 0px 0px;   
-  padding-top: 10%;
-  background-color: transparent;
+  padding-top: 8%;
+  background: transparent;
 }
 
 p{
@@ -17,6 +17,11 @@ p{
 h1{
   font-size:1.5em;
   color:#525252;
+}
+
+.error{
+  color: red;
+  text-align:center;
 }
 
 .box{

@@ -19,14 +19,14 @@ html(lang='en')
     nav.navbar.navbar-inverse
       .container-fluid
         .navbar-header
-          a.navbar-brand(href='/')= groupName
+          a.navbar-brand(href='/') Project 2 : Group 3
         ul.nav.navbar-nav
           li
             a(href='/chat') Chat
         ul.nav.navbar-nav.navbar-nav-center
           li
             a User: 
-              span= user
+              span#myName= userName
         ul.nav.navbar-nav.navbar-right
           li
             a(href='/users/register')
@@ -38,9 +38,11 @@ html(lang='en')
               |  Login
     .container
 
+    block scripts
+
     block content
   
-    block scripts
+
    
     
     

@@ -101,6 +101,11 @@
   border-radius: 50%;
   display: inline-block;
 }
+.messages .message .avatar .userID {
+  text-align: center;
+  font-size: 12px;
+  padding-top: 10px;
+}
 .messages .message .text_wrapper {
   display: inline-block;
   padding: 20px;
@@ -184,3 +189,4 @@
 .message_template {
   display: none;
 }
+
