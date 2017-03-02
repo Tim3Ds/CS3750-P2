@@ -12,12 +12,12 @@ module.exports = (io) => {
             console.log('sending message: ' + 
                         msg.username + ' ' +
                         msg.text + ' ' +
-                        stamp.substring(0, 4) + ' ' + stamp.substring(8, 10)
+                        stamp.substring(0, 5) + ' ' + stamp.substring(9, 11)
                 )
             io.emit('message', { 
                 username: msg.username, 
                 text: msg.text, 
-                time: stamp.substring(0, 4) + ' ' + stamp.substring(8, 10)
+                time: stamp.substring(0, 5) + ' ' + stamp.substring(9, 11)
             });
         });
         socket.on('disconnect', function(){
