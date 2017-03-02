@@ -1,5 +1,4 @@
-window.onunload = () => {
-    socket = io();
+window.o = () => {
     socket.emit('leave',{
         username: document.getElementsByTagName('p')[0].textContent
     })

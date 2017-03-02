@@ -13,7 +13,6 @@ module.exports = (io) => {
         });
         socket.on('send', function (msg) {
             var stamp = new Date().toLocaleTimeString();
-            console.log(stamp.length);
             if(stamp.length == 10 ){
                 stamp = stamp.substring(0, 4) + ' ' + stamp.substring(8, 10)
             }else{
@@ -27,7 +26,6 @@ module.exports = (io) => {
         });
         socket.on('join', function (msg) {
             var stamp = new Date().toLocaleTimeString();
-            console.log(stamp.length);
             if(stamp.length == 10 ){
                 stamp = stamp.substring(0, 4) + ' ' + stamp.substring(8, 10)
             }else{
@@ -41,7 +39,6 @@ module.exports = (io) => {
         });
         socket.on('leave', function (msg) {
             var stamp = new Date().toLocaleTimeString();
-            console.log(stamp.length);
             if(stamp.length == 10 ){
                 stamp = stamp.substring(0, 4) + ' ' + stamp.substring(8, 10)
             }else{
