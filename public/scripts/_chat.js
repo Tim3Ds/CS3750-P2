@@ -1,10 +1,12 @@
-
-
 window.onload = () => {
     let user = document.getElementsByTagName('p')[0].textContent;
 
-    let socket = io.connect('http://localhost:3000');
-
+    let socket = io.connect();
+    window.onbeforeunload = () => {
+        socket.emit('leave',{
+            username: document.getElementsByTagName('p')[0].textContent
+        })
+    };
     socket.on('message', (msg)=>{
         console.log('get message')
         var $messages, message;
@@ -29,6 +31,11 @@ window.onload = () => {
         message.draw();
         return $messages.animate({ scrollTop: $messages.prop('scrollHeight') }, 300);
     });
+
+    socket.emit('join', {
+            username: user
+    });
+
     var Message = function (arg) {
         this.user = arg.user, this.time = arg.time, this.text = arg.text, this.message_side = arg.message_side;
         this.draw = function (_this) {
