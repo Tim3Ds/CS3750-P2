@@ -35,7 +35,7 @@ module.exports = (io) => {
             }
             io.emit('message', {
                 username: 'Chat It Up', 
-                text: msg.username + 'has joined Chat', 
+                text: msg.username + ' has joined Chat', 
                 time: stamp
             });
         });
@@ -49,7 +49,7 @@ module.exports = (io) => {
             }
             io.emit('message', {
                 username: 'Chat It Up', 
-                text: msg.username + 'has left Chat', 
+                text: msg.username + ' has left Chat', 
                 time: stamp
             });
         });
