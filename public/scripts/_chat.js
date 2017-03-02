@@ -1,14 +1,12 @@
-window.o = () => {
-    socket.emit('leave',{
-        username: document.getElementsByTagName('p')[0].textContent
-    })
-};
-
 window.onload = () => {
     let user = document.getElementsByTagName('p')[0].textContent;
 
     let socket = io.connect();
-
+    window.onbeforeunload = () => {
+        socket.emit('leave',{
+            username: document.getElementsByTagName('p')[0].textContent
+        })
+    };
     socket.on('message', (msg)=>{
         console.log('get message')
         var $messages, message;
