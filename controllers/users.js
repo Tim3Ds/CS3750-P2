@@ -80,7 +80,7 @@ router.post('/login', function(req, res) {
     // console.log(user);
     // cant find user redirect to login with error msg displayed
     if (!user) {
-      res.render('login', { error: "Incorrect email / password.", csrfToken: req.csrfToken() });
+      res.render('login', { error: "Incorrect user name / password.", csrfToken: req.csrfToken() });
     } else {
       // if user found compare encrypted password to match
       if (bcrypt.compareSync(req.body.password, user.password)) {
